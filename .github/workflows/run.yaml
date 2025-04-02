@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
+        fail-fast: false
         matrix:
             flavor: [amazoncorretto, python-311]
     steps:
