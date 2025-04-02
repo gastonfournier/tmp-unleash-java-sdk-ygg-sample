@@ -1,0 +1,19 @@
+name: Run
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run container
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t ygg-java-sdk .
+      - name: Run container
+        run: docker run --rm -it ygg-java-sdk
