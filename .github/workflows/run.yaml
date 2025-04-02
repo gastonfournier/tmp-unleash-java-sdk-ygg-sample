@@ -17,6 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: docker build -f ${{ matrix.flavor }} -t ygg-java-sdk .
+        run: docker build -f Dockerfile-${{ matrix.flavor }} -t ygg-java-sdk .
       - name: Run container
         run: docker run --rm ygg-java-sdk
