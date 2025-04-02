@@ -23,7 +23,7 @@ public class AdvancedConstraints {
                     .unleashAPI(getOrElse("UNLEASH_API_URL", "https://app.unleash-hosted.com/demo/api"))
                     .instanceId("java-example")
                     .synchronousFetchOnInitialisation(true)
-                    .fetchTogglesInterval(1)
+                    .fetchTogglesInterval(5)
                     .sendMetricsInterval(60)
                     .subscriber(new UnleashSubscriber() {
                         @Override

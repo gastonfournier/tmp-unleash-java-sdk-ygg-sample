@@ -11,9 +11,12 @@ jobs:
     name: Run container
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    strategy:
+        matrix:
+            flavor: [amazoncorretto, python-311]
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: docker build -t ygg-java-sdk .
+        run: docker build -f ${{ matrix.flavor }} -t ygg-java-sdk .
       - name: Run container
         run: docker run --rm ygg-java-sdk

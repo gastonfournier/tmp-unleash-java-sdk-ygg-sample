@@ -1,0 +1,5 @@
+FROM amazoncorretto:21
+WORKDIR /build
+COPY cli-example .
+RUN ./gradlew build
+RUN ./gradlew copyDependencies

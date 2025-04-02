@@ -1,0 +1,18 @@
+FROM amazoncorretto:21 AS builder
+WORKDIR /example
+COPY cli-example .
+RUN ./gradlew build
+RUN ./gradlew copyDependencies
+
+FROM amazoncorretto:21-al2023-headless
+
+RUN dnf install gperftools-libs -y && \
+    dnf update --releasever latest -y && \
+    echo "networkaddress.cache.ttl=10" >> ${JAVA_HOME}/conf/security/java.security && \
+    dnf clean all
+
+ENV LD_PRELOAD="/usr/lib64/libtcmalloc.so.4"
+
+WORKDIR /app
+COPY --from=builder /example/build/libs/ .
+CMD ["java", "-cp", "cli-example.jar:dependencies/*", "io.getunleash.example.AdvancedConstraints"]
