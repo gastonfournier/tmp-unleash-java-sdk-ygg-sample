@@ -16,4 +16,4 @@ jobs:
       - name: Build image
         run: docker build -t ygg-java-sdk .
       - name: Run container
-        run: docker run --rm -it ygg-java-sdk
+        run: docker run --rm ygg-java-sdk

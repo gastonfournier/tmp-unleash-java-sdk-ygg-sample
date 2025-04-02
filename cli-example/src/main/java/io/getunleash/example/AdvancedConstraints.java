@@ -24,6 +24,7 @@ public class AdvancedConstraints {
                     .instanceId("java-example")
                     .synchronousFetchOnInitialisation(true)
                     .fetchTogglesInterval(1)
+                    .sendMetricsInterval(60)
                     .subscriber(new UnleashSubscriber() {
                         @Override
                         public void on(UnleashEvent unleashEvent) {
